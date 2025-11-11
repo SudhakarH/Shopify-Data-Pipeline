@@ -1,0 +1,54 @@
+Describe how you would monitor Shopify data pipelines:
+I would design a proactive end-to-end monitoring system combining Airflow alerts, metadata-based freshness checks, and GCP observability tools to ensure the Shopify pipelines remain timely, accurate, and cost-efficient.
+
+Data Freshness: How to detect when Shopify webhooks stop arriving?
+-Implement Airflow SLAs and data freshness checks, that trigger alerts if no new Shopify webhook data lands in BigQuery within the given window time (e.g., 1 hour).
+-Use BigQuery INFORMATION_SCHEMA queries or a metadata audit table to log the latest ingestion timestamp per event type.
+-Integrate with Stackdriver (Cloud Monitoring) to visualize ingestion lags and trigger email alerts when thresholds were breached.
+-Add a heartbeat event from Shopify or scheduler that verifies the pipeline is live.
+
+Revenue Accuracy: How to validate that BigQuery totals match Shopify?
+-Schedule a daily data reconciliation job comparing aggregated totals (total_price, order_count, refunds) between: Shopify REST API (via incremental API call) and BigQuery analytics mart (daily_ecommerce_performance)
+-If the deltas exceed a small tolerance (e.g., +0.5% or -0.5%), automatically log and raise an alert to DataOps for the investigation.
+-Keep recording job ID, run timestamp, totals, and discrepancy flag in an audit_log table
+
+Webhook Reliability: Handling missed or delayed webhook deliveries and how to ensure exactly-once processing of Shopify webhooks?
+missed or delayed webhook deliveries:
+-Ingest webhooks asynchronously through Pub/Sub → Cloud Run → BigQuery architecture:
+    --Pub/Sub automatically retries unacknowledged messages.
+    --Add Dead Letter Queue (DLQ) for failed events that exceed retry limits.
+-Use deduplication keys (Shopify order_id + updated_at) to ensure idempotent processing which prevents double inserts on retries.
+-Maintain a processing_state table with load timestamps and hashes for validation.
+
+Ensuring Exactly-Once Processing:
+-Before insertion, query for an existing order_id + updated_at record in BigQuery, skip or merge duplicates.
+-Use BigQuery MERGE statements in ELT instead of INSERT for updating.
+-Add Airflow task-level retries with exponential backoff and transactional commits for atomicity.
+
+Would you consider the use of Pub/Sub topics for different event types (orders, refunds, customer updates)?
+Yes — I would absolutely use separate Pub/Sub topics for each Shopify event type (orders, refunds, customers) to improve scalability, isolation, and fault tolerance.
+Reasons & Benefits:
+-Decoupled Processing:
+    --Each event type can be processed independently by different Airflow DAGs or Cloud Run services, reducing coupling between pipelines.
+-Parallelism & Scalability:
+    --Enables horizontal scaling — e.g., large bursts of orders won’t delay customer updates.
+-Granular Monitoring:
+    --Separate topics make it easier to monitor message lag, failures, and retry counts per event type.
+-Simpler Error Handling:
+    --Each topic can have its own dead letter queue (DLQ) for failed messages and retry logic.
+-Schema Evolution:
+    --Supports different payload structures for each event type without breaking downstream consumers.
+
+Would you consider the use of  Dead letter queues for failed webhook processing?
+Yes — I would definitely use Dead Letter Queues (DLQs) to improve reliability and resilience of the webhook ingestion process.
+How & Why:
+-Failure Isolation:
+    --Any malformed or unprocessable webhook message (e.g., invalid JSON, missing order ID) is sent to a DLQ Pub/Sub topic instead of being lost or blocking the main pipeline.
+-Retry & Replay Mechanism:
+    --DLQs allow for manual or automated retries once the root cause is fixed.
+-Debugging & Root Cause Analysis:
+    --Storing the failed payload along with error details in the DLQ helps engineers quickly identify data quality or transformation issues.
+-Alerting & Monitoring:
+    --Cloud Monitoring or Airflow can track DLQ message counts and trigger alerts if failures exceed a defined threshold.
+-Data Integrity:
+    --Ensures the main data flow stays clean, only valid events reach BigQuery, while retaining visibility into what failed.

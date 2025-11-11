@@ -1,0 +1,151 @@
+{
+    "shopify_orders": [
+        {
+            "order_id": "",
+            "order_number": "#1050",
+            "customer_id": "C98765",
+            "email": "jane.doe@example.com",
+            "total_price": 25.98,
+            "subtotal_price": 23.50,
+            "total_tax": 2.48,
+            "currency": "EUR",
+            "financial_status": "paid",
+            "fulfillment_status": "fulfilled",
+            "tags": "books,vintage,rare",
+            "source_name": "web",
+            "created_at": "2025-08-01T10:00:00Z",
+            "updated_at": "2025-08-01T10:15:00Z",
+            "line_items": [
+                {
+                    "line_item_id": "111",
+                    "product_id": "555",
+                    "variant_id": "555-A",
+                    "title": "Vintage Book",
+                    "variant_title": "Hardcover",
+                    "quantity": 2,
+                    "price": 12.99,
+                    "total_discount": 2.48,
+                    "vendor": "momox-books",
+                    "product_type": "Book",
+                    "created_at": "2025-08-01T10:00:00Z"
+                }
+            ]
+        },
+        {
+            "order_id": "1002",
+            "order_number": "#1051",
+            "customer_id": "C54321",
+            "email": "john.smith@example.com",
+            "total_price": 89.99,
+            "subtotal_price": 84.00,
+            "total_tax": 5.99,
+            "currency": "EUR",
+            "financial_status": "paid",
+            "fulfillment_status": "partial",
+            "tags": "fashion,sale",
+            "source_name": "mobile",
+            "created_at": "2025-08-03T14:22:00Z",
+            "updated_at": "2025-08-03T14:35:00Z",
+            "line_items": [
+                {
+                    "line_item_id": "222",
+                    "product_id": "777",
+                    "variant_id": "777-M",
+                    "title": "Denim Jacket",
+                    "variant_title": "Medium",
+                    "quantity": 1,
+                    "price": 59.99,
+                    "total_discount": 0.0,
+                    "vendor": "momox-fashion",
+                    "product_type": "Clothing",
+                    "created_at": "2025-08-03T14:22:00Z"
+                },
+                {
+                    "line_item_id": "223",
+                    "product_id": "778",
+                    "variant_id": "778-XL",
+                    "title": "Graphic T-Shirt",
+                    "variant_title": "XL",
+                    "quantity": 2,
+                    "price": 15.00,
+                    "total_discount": 1.00,
+                    "vendor": "momox-fashion",
+                    "product_type": "Clothing",
+                    "created_at": "2025-08-03T14:22:00Z"
+                }
+            ]
+        },
+        {
+            "order_id": "1002",
+            "order_number": "#1052",
+            "customer_id": "C11223",
+            "email": "alice.wong@example.com",
+            "total_price": 45.20,
+            "subtotal_price": 43.00,
+            "total_tax": 2.20,
+            "currency": "EUR",
+            "financial_status": "pending",
+            "fulfillment_status": "unfulfilled",
+            "tags": "games,new",
+            "source_name": "pos",
+            "created_at": "2025-09-10T09:45:00Z",
+            "updated_at": "2025-09-10T09:50:00Z",
+            "line_items": [
+                {
+                    "line_item_id": "331",
+                    "product_id": "900",
+                    "variant_id": "900-STD",
+                    "title": "Board Game - The Strategy",
+                    "variant_title": "Standard",
+                    "quantity": 1,
+                    "price": 45.20,
+                    "total_discount": 0.0,
+                    "vendor": "momox-games",
+                    "product_type": "Game",
+                    "created_at": "2025-09-10T09:45:00Z"
+                }
+            ]
+        }
+    ],
+    "shopify_customers": [
+        {
+            "customer_id": "C98765",
+            "email": "jane.doe@example.com",
+            "first_name": "Jane",
+            "last_name": "Doe",
+            "total_spent": 120.50,
+            "orders_count": 3,
+            "accepts_marketing": true,
+            "state": "enabled",
+            "tags": "vip,newsletter",
+            "created_at": "2024-05-01T09:00:00Z",
+            "updated_at": "2025-08-01T10:15:00Z"
+        },
+        {
+            "customer_id": "C54321",
+            "email": "john.smith@example.com",
+            "first_name": "John",
+            "last_name": "Smith",
+            "total_spent": 350.00,
+            "orders_count": 8,
+            "accepts_marketing": false,
+            "state": "enabled",
+            "tags": "frequent,sale-lover",
+            "created_at": "2023-11-20T16:00:00Z",
+            "updated_at": "2025-08-03T14:35:00Z"
+        },
+        {
+            "customer_id": "C11223",
+            "email": "alice.wong@example.com",
+            "first_name": "Alice",
+            "last_name": "Wong",
+            "total_spent": 45.20,
+            "orders_count": 1,
+            "accepts_marketing": true,
+            "state": "enabled",
+            "tags": "new,gamer",
+            "created_at": "2025-09-10T09:00:00Z",
+            "updated_at": "2025-09-10T09:50:00Z"
+        }
+    ]
+}

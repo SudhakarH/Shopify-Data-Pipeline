@@ -1,0 +1,19 @@
+# Core Airflow framework
+apache-airflow==2.9.3
+
+# Google Cloud (BigQuery & Authentication)
+google-cloud-bigquery==3.22.0
+google-auth==2.35.0
+
+# Timezone conversions
+pytz==2024.2
+
+# JSON handling, data utilities
+pandas==2.2.2
+
+# Optional: used in LookML validation
+looker-sdk==23.20.0
+
+# Environment
+python_version >= 3.10
+
