@@ -3,7 +3,7 @@
 ```markdown
 # Data Engineering Case Study
 
-Welcome! You're joining momox's BI team to help optimize our e-commerce operations. 
+Welcome! You're joining "XYZ" BI team to help optimize our e-commerce operations. 
 
 We integrate with Shopify to manage our online storefront while building and maintaining 
 reliable data pipelines that transform Shopify webhook data into actionable business insights 
@@ -22,14 +22,14 @@ You'll work with Shopify webhook/API data mock (json) and your task are:
 
 
 ## Structure
-- `{your_name_DE_momox}/` → root directory.
+- `{your_name_DE}/` → root directory.
 - `airflow_dag/` → Airflow DAGs for orchestration.
 - `sql/` → BigQuery transformation scripts for analytics mart.
 - `Shopify webhook processing functions and utils`.
 - `lookml/` → LookML models, views, and explores.
 - `monitoring/` → Monitoring and error-handling strategy.
 
-{your_name_DE_momox}/
+{your_name_DE}/
 ├─ README.md
 ├─ requirements.txt
 ├─ .gitignore
@@ -131,7 +131,7 @@ shopify_order_items (
     quantity INT64,
     price FLOAT64,
     total_discount FLOAT64,
-    vendor STRING,        -- 'momox-books', 'momox-fashion', etc.
+    vendor STRING,        -- 'books', 'fashion', etc.
     product_type STRING,  -- 'Book', 'CD', 'Game', 'Clothing'
     created_at TIMESTAMP
 
@@ -293,37 +293,6 @@ Pub/Sub Architecture: Would you consider the use of Pub/Sub topics for different
 
 ---
 
-## Submission Requirements & Evaluation
 
-### Minimum Requirements
 
-A minimal accepted case study must include:
 
-- python/process_webhook.py 
-- sql/ecommerce_mart.sql that creates the mart table and is runnable.
-- dag/shopify_pipeline_dag.py that references the process function and runs locally (simulated).
-- lookml/* with at least one view and one explore.
-- open question answers.
-
-### Submission Format
-
-In a zip folder with your name {name_DE_momox}, Submit your files.
-
-### Evaluation Criteria
-
-- **Correctness**: Does the code work and meet functional and business requirements?
-- **Best Practices**: Proper SQL patterns, LookML conventions, Python standards
-- **Performance**: Understanding of BigQuery optimization techniques
-- **Scalability**: Solutions that handle growth (1000+ events/hour)
-- **Monitoring**: Proactive approach to data reliability. Alerts and retry logic.
-- **Communication**: Clear explanations and documentation
-
-### Notes
-- Focus on production-ready code with error handling
-- Comment your reasoning for key technical decisions
-- If you're unsure about requirements, state your assumptions clearly.
-- Partial solutions are accepted as long as they are clean, testable, and with a clear scope.
-- The submitted solution must be your own work and explainable by you in follow-up interviews.
-- **Tip**: If you use bq, looker, or airflow CLIs or APIs in your pipeline, feel free to note it. 
-  We love engineers who automate well.
-- Good luck! We're excited to see your approach to data engineering challenges.
