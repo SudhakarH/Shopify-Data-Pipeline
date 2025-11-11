@@ -110,7 +110,12 @@ Explore: shopify_analytics.explore.lkml
 
 
 📬 Contact
+
 Author: Sudhakar Hanumanth
+
 Email: hanumanthsudhakar@gmail.com
+
 Role: Data Engineer
+
 Case Study: Data Engineer – GCP & Looker
+
