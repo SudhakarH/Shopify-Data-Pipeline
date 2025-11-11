@@ -5,22 +5,23 @@ This case study simulates a real-world Data Engineering pipeline for ingesting S
 The goal is to demonstrate end-to-end data engineering capabilities — from raw JSON ingestion to BI-ready data models — using Airflow, BigQuery, and Looker.
 
 Folder Structure
-Sudhakar_Hanumanth_DE_momox/
-├─ README.md
-├─ requirements.txt
-├─ dag/
-│  ├─ shopify_pipeline_dag.py
-│  |─ utils/
-│  │  ├─ process_webhook.py
-│  |  └─ __init__.py
-|  └─ sql/
-│     └─ ecommerce_mart.sql
-├─ lookml/
-│  ├─ views/ecommerce_performance.view.lkml
-│  └─ explores/shopify_analytics.explore.lkml
-├─ Documentation.md
-├─ open questions.txt
-└─ test_task_1.py
+
+     Sudhakar_Hanumanth_DE/
+     ├─ README.md
+     ├─ requirements.txt
+     ├─ dag/
+     │  ├─ shopify_pipeline_dag.py
+     │  |─ utils/
+     │  │  ├─ process_webhook.py
+     │  |  └─ __init__.py
+     |  └─ sql/
+     │     └─ ecommerce_mart.sql
+     ├─ lookml/
+     │  ├─ views/ecommerce_performance.view.lkml
+     │  └─ explores/shopify_analytics.explore.lkml
+     ├─ Documentation.md
+     ├─ open questions.txt
+     └─ test_task_1.py
 
 
 ## Pipeline Components
@@ -112,4 +113,4 @@ Explore: shopify_analytics.explore.lkml
 Author: Sudhakar Hanumanth
 Email: hanumanthsudhakar@gmail.com
 Role: Data Engineer
-Case Study: Data Engineer – GCP & Looker (momox)
+Case Study: Data Engineer – GCP & Looker
